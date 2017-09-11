@@ -9,14 +9,14 @@ AcademyGroup::AcademyGroup()
 
 void AcademyGroup::AddStudent()
 {
-	//cout << "U want empty card?(y/n): ";
-	//char answer;
-	//cin >> answer;
+	cout << "U want empty card?(y/n): ";
+	char answer;
+	cin >> answer;
 
-	//if (answer == 'y')
-	//	this->stu.push_back(Student);
-	//else
-	//{
+	if (answer == 'y')
+		this->stu.push_back(new Student());
+	else
+	{
 		string surname, name, phone;
 		int age;
 		double average;
@@ -36,9 +36,8 @@ void AcademyGroup::AddStudent()
 		cout << "Input average: ";
 		cin >> average;
 
-		this->stu->
-		stu[this->count](name, surname, age, phone, average);
-//	}
+		this->stu.push_back(new Student(name, surname, age, phone, average));
+	}
 }
 
 void AcademyGroup::DeleteStudent()
@@ -135,7 +134,80 @@ void AcademyGroup::Print()
 
 void AcademyGroup::FindStudent()
 {
+	cout << endl;
+	cout << "Write by which param u want to search:"
+		"\n 1.Surname"
+		"\n 2.Name"
+		"\n 3.Age"
+		"\n 4.Phone"
+		"\n 5.Average";
 
+	int answer;
+	cout << "\n\nBy ";
+	cin >> answer;
+
+	string find;
+	cout << "What we search ";
+	cin >> find;
+
+	for (int i = 0; i < this->count; i++)
+	{
+		switch (answer)
+		{
+		case 1:
+			if (find == this->stu[i]->getSurname())
+			{
+				cout << this->stu[i]->getSurname() << '\t';
+				cout << this->stu[i]->getName() << '\t';
+				cout << this->stu[i]->getAge() << '\t';
+				cout << this->stu[i]->getPhone() << '\t';
+				cout << this->stu[i]->getAverage() << '\t';
+			}
+			break;
+		case 2:
+			if (find == this->stu[i]->getName())
+			{
+				cout << this->stu[i]->getSurname() << '\t';
+				cout << this->stu[i]->getName() << '\t';
+				cout << this->stu[i]->getAge() << '\t';
+				cout << this->stu[i]->getPhone() << '\t';
+				cout << this->stu[i]->getAverage() << '\t';
+			}
+			break;
+		case 3:
+			if (stoi(find) == this->stu[i]->getAge())
+			{
+				cout << this->stu[i]->getSurname() << '\t';
+				cout << this->stu[i]->getName() << '\t';
+				cout << this->stu[i]->getAge() << '\t';
+				cout << this->stu[i]->getPhone() << '\t';
+				cout << this->stu[i]->getAverage() << '\t';
+			}
+			break;
+		case 4:
+			if (find == this->stu[i]->getPhone())
+			{
+				cout << this->stu[i]->getSurname() << '\t';
+				cout << this->stu[i]->getName() << '\t';
+				cout << this->stu[i]->getAge() << '\t';
+				cout << this->stu[i]->getPhone() << '\t';
+				cout << this->stu[i]->getAverage() << '\t';
+			}
+			break;
+		case 5:
+			if (stod(find) == this->stu[i]->getAverage())
+			{
+				cout << this->stu[i]->getSurname() << '\t';
+				cout << this->stu[i]->getName() << '\t';
+				cout << this->stu[i]->getAge() << '\t';
+				cout << this->stu[i]->getPhone() << '\t';
+				cout << this->stu[i]->getAverage() << '\t';
+			}
+			break;
+		default:
+			cout << "Student not found!" << endl;
+		}
+	}
 }
 
 void AcademyGroup::Sort()

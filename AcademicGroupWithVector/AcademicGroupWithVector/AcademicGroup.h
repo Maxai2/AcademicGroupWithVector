@@ -8,8 +8,7 @@ using namespace std;
 
 class AcademyGroup
 {
-//	vector <vector<Student*>> stu;
-	vector <Student> stu;
+	vector <Student*> stu;
 	int count;
 
 public:
